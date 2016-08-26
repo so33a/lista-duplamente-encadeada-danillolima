@@ -32,7 +32,7 @@ void insereDepois (ListaDupla l, link x, link t) {
     t->next = l->z;
     t->prev = l->z;
     l->z->prev = t;
-    l->z->next = t; 
+    l->z->next = t;
   } else {
     t->next = x->next;
     t->prev = x;
@@ -74,7 +74,7 @@ link buscar(ListaDupla l, int item) {
   }
   return NULL;
 }
-/* 
+/*
 void insereAntes (ListaDupla l, link x, link t);
 */
 
@@ -84,10 +84,36 @@ void destroiLista(ListaDupla l) {
     l->head = t->next;
     l->z->next = t->next;
     l->head->prev = l->z;
-    free(t); 
+    free(t);
     t = l->head;
-  } 
+  }
   free(t);
   free(l);
 }
 
+/*
+ * Menor elemento
+ */
+
+link menorElemento(ListaDupla l){
+	link t = l->head;
+	link menor = l->head;
+	menor->item = t->item;
+
+	while(t != l->z){
+		if(menor->item > t->item){
+			menor = t;
+			menor->item = t->item;
+		}
+		t = t->next;
+	}
+	return menor;
+}
+
+void ordenaLista(ListaDupla l){
+    ListaDupla aux = inicializa();
+    link aux, t;
+    while(t != l->z){
+        aux = menorElemento(l);
+    }
+}
